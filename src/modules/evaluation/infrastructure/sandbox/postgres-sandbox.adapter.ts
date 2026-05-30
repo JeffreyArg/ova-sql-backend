@@ -86,6 +86,6 @@ export class PostgresSandboxAdapter extends SqlExecutorPort {
     if (orderMatters) {
       return userRows.every((r, i) => r === expectedRows[i]);
     }
-    return [...userRows].sort().every((r, i) => r === [...expectedRows].sort()[i]);
+    return [...userRows].sort().every((r, i) => r === [...expectedRows].sort((a, b) => a.localeCompare(b))[i]);
   }
 }
